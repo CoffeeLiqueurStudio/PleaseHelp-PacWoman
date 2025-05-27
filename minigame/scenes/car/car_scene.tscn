@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://dp2cj523p5a2"]
+
+[ext_resource type="Script" uid="uid://ba8bx0ixx1lpx" path="res://minigame/scripts/car/car_script.gd" id="1_clc12"]
+
+[node name="Car_scene" type="CharacterBody2D"]
+script = ExtResource("1_clc12")

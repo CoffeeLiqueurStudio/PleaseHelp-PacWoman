@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://fn0ya38xtrsl"]
+
+[ext_resource type="Script" uid="uid://cy4t506bkq6af" path="res://minigame/scripts/cycle/cycle_script.gd" id="1_kbpb3"]
+
+[node name="cycle_Scene" type="CharacterBody2D"]
+script = ExtResource("1_kbpb3")

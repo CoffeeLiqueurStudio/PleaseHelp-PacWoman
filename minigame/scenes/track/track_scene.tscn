@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://bafhnt7j6oa7"]
+
+[ext_resource type="Script" uid="uid://cpjeyi1thv7cp" path="res://minigame/scripts/track_script.gd" id="1_ouud4"]
+
+[node name="track_scene" type="Node2D"]
+position = Vector2(0, 1)
+script = ExtResource("1_ouud4")
