@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://dd226llk6qyus"]
+
+[ext_resource type="Texture2D" uid="uid://dyhuf0bpi55uk" path="res://minigame/scenes/icon.svg" id="1_5wow1"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_lbu6l"]
+radius = 32.0156
+
+[node name="Barrier_2" type="Area2D"]
+collision_layer = 2
+collision_mask = 0
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("1_5wow1")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_lbu6l")

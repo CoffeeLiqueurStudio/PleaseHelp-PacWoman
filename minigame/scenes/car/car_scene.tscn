@@ -1,6 +1,45 @@
-[gd_scene load_steps=2 format=3 uid="uid://dp2cj523p5a2"]
+[gd_scene load_steps=6 format=3 uid="uid://dp2cj523p5a2"]
 
 [ext_resource type="Script" uid="uid://ba8bx0ixx1lpx" path="res://minigame/scripts/car/car_script.gd" id="1_clc12"]
+[ext_resource type="Texture2D" uid="uid://dyhuf0bpi55uk" path="res://minigame/scenes/icon.svg" id="2_07c0k"]
+
+[sub_resource type="Curve2D" id="Curve2D_clc12"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 226, 0, 0, 0, 0, 0, 544, -4, 0, 0, 0, 0, 549, 227, 0, 0, 0, 0, 540, 481, 0, 0, 0, 0, 752, 481, 0, 0, 0, 0, 1003, 484, 0, 0, 0, 0, 997, 266, 0, 0, 0, 0, 1129, 273, 0, 0, 0, 0, 1119, 628, 0, 0, 0, 0, 20, 616, 0, 0, 0, 0, 1, 0)
+}
+point_count = 12
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_07c0k"]
+size = Vector2(128, 128)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_07c0k"]
+radius = 77.4661
 
 [node name="Car_scene" type="CharacterBody2D"]
 script = ExtResource("1_clc12")
+
+[node name="Path2D" type="Path2D" parent="."]
+curve = SubResource("Curve2D_clc12")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="Path2D"]
+position = Vector2(1, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="Path2D/PathFollow2D"]
+texture = ExtResource("2_07c0k")
+
+[node name="Car" type="CharacterBody2D" parent="Path2D/PathFollow2D"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Path2D/PathFollow2D/Car"]
+shape = SubResource("RectangleShape2D_07c0k")
+
+[node name="Area2D" type="Area2D" parent="Path2D/PathFollow2D"]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Path2D/PathFollow2D/Area2D"]
+shape = SubResource("CircleShape2D_07c0k")
+
+[node name="Timer" type="Timer" parent="."]
+
+[connection signal="area_entered" from="Path2D/PathFollow2D/Area2D" to="." method="_on_area_2d_area_entered"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
